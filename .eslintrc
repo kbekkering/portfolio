@@ -241,5 +241,14 @@
     "react/self-closing-comp": 2, // Prevent extra closing tags for components without children
     "react/jsx-wrap-multilines": 2, // Prevent missing parentheses around multilines JSX
     //"react/prop-types": 2, // Prevent missing props validation in a React component definition
-  }
+  },
+  "overrides": [
+    {
+      "files": [ "bin/*.js", "lib/*.js" ],
+      "excludedFiles": "*.ejs",
+      "rules": {
+        "quotes": [ 2, "single" ]
+      }
+    }
+  ]
 }
