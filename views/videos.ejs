@@ -9,18 +9,17 @@
   <% videos.forEach((video) => { %>
 
     <div class="col s12 m6 l4">
-      <div class="card small">
-        <div class="card-image">
-          <img src="https://pixabay.com/get/e83cb10f2df11c22d2524518b7444795ea76e5d004b0144291f4c07daee4b4_340.jpg">
-          <span class="card-title"><%= video.title %></span>
+      <a href="/videos/<%=video.id%>">
+        <div class="card small">
+          <div class="card-image">
+            <img src="https://pixabay.com/get/e83cb10f2df11c22d2524518b7444795ea76e5d004b0144291f4c07daee4b4_340.jpg">
+            <span class="card-title"><%= video.title %></span>
+          </div>
+          <div class="card-content">
+            <p><%= video.description %></p>
+          </div>
         </div>
-        <div class="card-content">
-          <p><%= video.description %></p>
-        </div>
-        <div class="card-action">
-          <a href="/videos/<%=video.id%>">View</a>
-        </div>
-      </div>
+      </a>  
     </div>
 
     <% }) %>
