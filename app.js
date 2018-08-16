@@ -3,11 +3,13 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 // const seedDB = require('./seeds');
 
 mongoose.connect(process.env.DATABASEURL); // mongodb, currently running on mlab
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // seedDB(); // seed the DB
 

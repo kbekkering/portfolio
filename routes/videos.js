@@ -27,4 +27,22 @@ router.get('/:id', (req, res) => {
   });
 });
 
+router.post('/', (req, res) => {
+  let newVideo = {
+    title: req.body.title,
+    embedCode: req.body.embedCode,
+    year: req.body.year,
+    description: req.body.description
+  };
+  Video.create(newVideo, (err, newlyCreated) => {
+    if (err) {
+      console.log(err);
+      req.send('oops, something went wrong');
+    } else {
+      console.log(newlyCreated);
+      res.render('videos/index');
+    }
+  });
+});
+
 module.exports = router;
