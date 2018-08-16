@@ -27,6 +27,17 @@ router.get('/:id', (req, res) => {
   });
 });
 
+router.get('/:id/edit', (req, res) => {
+  Video.findById(req.params.id, (err, foundVideo) => {
+    if (err) {
+      console.log(err);
+      res.send('Oops, something went wrong');
+    } else {
+      res.render('videos/edit', { video: foundVideo });
+    }
+  });
+});
+
 router.post('/', (req, res) => {
   let newVideo = {
     title: req.body.title,
@@ -41,6 +52,18 @@ router.post('/', (req, res) => {
     } else {
       console.log(newlyCreated);
       res.render('videos/index');
+    }
+  });
+});
+
+router.put('/:id', (req, res) => {
+  Video.findByIdAndUpdate(req.params.id, req.body.video, (err, updatedVideo) => {
+    if (err) {
+      console.log(err);
+      res.send('oops, something went wrong');
+    } else {
+      console.log(updatedVideo);
+      res.redirect('/videos');
     }
   });
 });
