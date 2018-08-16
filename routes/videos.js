@@ -12,4 +12,14 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/:id', (req, res) => {
+  Video.findById(req.params.id, (err, foundVideo) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('videos/show', { video: foundVideo });
+    }
+  });
+});
+
 module.exports = router;
