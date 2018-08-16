@@ -12,10 +12,15 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/new', function(req, res) {
+  res.render('videos/new');
+});
+
 router.get('/:id', (req, res) => {
   Video.findById(req.params.id, (err, foundVideo) => {
     if (err) {
       console.log(err);
+      res.send('Oops, something went wrong');
     } else {
       res.render('videos/show', { video: foundVideo });
     }

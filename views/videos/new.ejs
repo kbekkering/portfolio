@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+
+<h5>Add New Video</h5>
+<form class="col s12" action="/videos" method="POST">
+  <div class="row">
+    <div class="input-field col s6">
+      <i class="material-icons prefix">title</i>
+      <input id="icon_prefix" type="text" class="validate" required>
+      <label for="icon_prefix">Title</label>
+    </div>
+    <div class="input-field col offset-s2 s4">
+      <i class="material-icons prefix">calendar_today</i>
+      <input id="icon_prefix" type="text" class="validate" required>
+      <label for="icon_prefix">Year</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">text_fields</i>
+      <textarea id="textarea1" class="materialize-textarea validate" required></textarea>
+      <label for="textarea1">Description</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s4">
+      <i class="material-icons prefix">videocam</i>
+      <input id="icon_prefix" type="text" class="validate" required>
+      <label for="icon_prefix">Youtube ID</label>
+    </div>
+  </div>
+  <button class="btn green waves-effect waves-light" type="submit" name="action">Save
+    <i class="material-icons right">save</i>
+  </button>
+</form>
+
+<% include ../partials/footer %>
