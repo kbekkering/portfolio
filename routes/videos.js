@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.render('videos', { videos: allVideos });
+      res.render('videos', { videos: allVideos, page: 'videos' });
     }
   });
 });
@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
       console.log(err);
       res.send('Oops, something went wrong');
     } else {
-      res.render('videos/show', { video: foundVideo });
+      res.render('videos/show', { video: foundVideo, page: 'videos' });
     }
   });
 });
@@ -33,7 +33,7 @@ router.get('/:id/edit', (req, res) => {
       console.log(err);
       res.send('Oops, something went wrong');
     } else {
-      res.render('videos/edit', { video: foundVideo });
+      res.render('videos/edit', { video: foundVideo, page: 'videos' });
     }
   });
 });
@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
       req.send('oops, something went wrong');
     } else {
       console.log(newlyCreated);
-      res.render('videos/index');
+      res.render('videos/index', { page: 'videos' });
     }
   });
 });
