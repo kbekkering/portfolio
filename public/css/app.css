@@ -3,11 +3,17 @@
   padding-right: 20px;
 }
 
+.card:hover {
+  transform: scale(1.02);
+  transition: .2s ease-in-out;
+}
+
 a .card .card-content p {
   color: rgba(0,0,0,0.87);
 }
 
-.card:hover {
-  transform: scale(1.02);
-  transition: .2s ease-in-out;
+.card-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
