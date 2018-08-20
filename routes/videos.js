@@ -2,6 +2,7 @@ const express = require('express');
 let router = express.Router();
 let Video = require('../models/video');
 
+// INDEX route
 router.get('/', (req, res) => {
   Video.find({}, (err, allVideos) => {
     if (err) {
@@ -12,10 +13,12 @@ router.get('/', (req, res) => {
   });
 });
 
+// NEW video route
 router.get('/new', function(req, res) {
   res.render('videos/new');
 });
 
+// SHOW individual video route
 router.get('/:id', (req, res) => {
   Video.findById(req.params.id, (err, foundVideo) => {
     if (err) {
@@ -27,6 +30,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
+// EDIT route
 router.get('/:id/edit', (req, res) => {
   Video.findById(req.params.id, (err, foundVideo) => {
     if (err) {
@@ -38,6 +42,7 @@ router.get('/:id/edit', (req, res) => {
   });
 });
 
+// CREATE route
 router.post('/', (req, res) => {
   let newVideo = {
     title: req.body.title,
@@ -56,6 +61,7 @@ router.post('/', (req, res) => {
   });
 });
 
+// UPDATE route
 router.put('/:id', (req, res) => {
   Video.findByIdAndUpdate(req.params.id, req.body.video, (err, updatedVideo) => {
     if (err) {
