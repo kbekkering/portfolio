@@ -8,6 +8,13 @@
 
 <div class="container">
   <p><%=video.description%></p>
+
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large deep-orange waves-effect waves-light" href="/videos/<%= video.id %>/edit">
+        <i class="large material-icons">edit</i>
+      </a>
+    </div>
+
   
 
 <% include ../partials/footer %>
