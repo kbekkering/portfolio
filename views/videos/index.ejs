@@ -4,34 +4,35 @@
 <p>
   For the past few years I've been documenting my travels through video. What started with a GoPro and an iPad evolved into a combination of action cams, DSLR's, drone footage and Premiere Pro. 
 </p>
-
-  <div class="row">
-    <% videos.forEach((video) => { %>
-
-    <div class="col s12 m6 l4">
-      <a href="/videos/<%=video.id%>">
-        <div class="card small">
-          <div class="card-image">
-            <img src="https://i.ytimg.com/vi/<%=video.embedCode%>/hqdefault.jpg">
-          </div>
-          <div class="card-content">
-            <p>
-              <strong><%= video.title%></strong>
-              <br />
-              <%= video.description %></p>
-          </div>
+   
+  <% years.forEach((year) => { %>
+    <h5><%=year%></h5>
+    <hr />
+    <div class="row">
+      <% videos.forEach((video) => { if (video.year === year) { %>
+        <div class="col s12 m6 l4">
+          <a href="/videos/<%=video.id%>">
+            <div class="card small">
+              <div class="card-image">
+                <img src="https://i.ytimg.com/vi/<%=video.embedCode%>/hqdefault.jpg">
+              </div>
+              <div class="card-content">
+                <p>
+                  <strong><%= video.title%></strong>
+                  <br />
+                  <%= video.description %></p>
+              </div>
+            </div>
+          </a>  
         </div>
-      </a>  
+      <% }}) %>
     </div>
+  <% }) %>
 
-    <% }) %>
-
-    <div class="fixed-action-btn">
-      <a class="btn-floating btn-large deep-orange waves-effect waves-light" href="/videos/new">
-        <i class="large material-icons">add</i>
-      </a>
-    </div>
-
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large deep-orange waves-effect waves-light" href="/videos/new">
+      <i class="large material-icons">add</i>
+    </a>
   </div>
 
 <% include ../partials/footer %>

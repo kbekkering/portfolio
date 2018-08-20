@@ -7,10 +7,13 @@ let sortByKey = require('../public/js/sortByKey');
 router.get('/', (req, res) => {
   Video.find({}, (err, allVideos) => {
     let sortedVideos = sortByKey(allVideos, 'year').reverse();
+    let uniqueYears = sortedVideos.map((video) => video.year).filter(function(value, index, self) {
+      return self.indexOf(value) === index;
+    });
     if (err) {
       console.log(err);
     } else {
-      res.render('videos/index', { videos: sortedVideos, page: 'videos', type: '' });
+      res.render('videos/index', { videos: sortedVideos, years: uniqueYears, page: 'videos', type: '' });
     }
   });
 });
