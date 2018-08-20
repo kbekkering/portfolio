@@ -74,4 +74,16 @@ router.put('/:id', (req, res) => {
   });
 });
 
+// DELETE route
+router.delete('/:id', (req, res) => {
+  Video.findByIdAndRemove(req.params.id, (err) => {
+    if (err) {
+      console.log(err);
+      res.send('oops, something went wrong');
+    } else {
+      res.redirect('/videos');
+    }
+  });
+});
+
 module.exports = router;
