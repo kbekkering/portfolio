@@ -48,7 +48,7 @@ router.post('/', (req, res) => {
   Video.create(newVideo, (err, newlyCreated) => {
     if (err) {
       console.log(err);
-      req.send('oops, something went wrong');
+      res.send('oops, something went wrong');
     } else {
       console.log(newlyCreated);
       res.redirect('/videos');
