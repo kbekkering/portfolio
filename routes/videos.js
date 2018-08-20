@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.render('videos', { videos: allVideos, page: 'videos' });
+      res.render('videos/index', { videos: allVideos, page: 'videos' });
     }
   });
 });
