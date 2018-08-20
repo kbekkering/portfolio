@@ -10,17 +10,23 @@ router.get('/', (req, res) => {
     let uniqueYears = sortedVideos.map((video) => video.year).filter(function(value, index, self) {
       return self.indexOf(value) === index;
     });
+    let testVideos = allVideos.sort(function(video1, video2) {
+      if (video1.year > video2.year) {return -1};
+      if (video1.year < video2.year) {return 1};
+      if (video1.number > video2.number) {return 1};
+      if (video1.number < video2.number) {return -1};
+    });
     if (err) {
       console.log(err);
     } else {
-      res.render('videos/index', { videos: sortedVideos, years: uniqueYears, page: 'videos', type: '' });
+      res.render('videos/index', { videos: testVideos, years: uniqueYears, page: 'videos', type: '' });
     }
   });
 });
 
 // NEW video route
 router.get('/new', function(req, res) {
-  res.render('videos/new', { page: 'videos' });
+  res.render('videos/new', { page: 'videos', type: '' });
 });
 
 // SHOW individual video route
@@ -42,7 +48,7 @@ router.get('/:id/edit', (req, res) => {
       console.log(err);
       res.send('Oops, something went wrong');
     } else {
-      res.render('videos/edit', { video: foundVideo, page: 'videos' });
+      res.render('videos/edit', { video: foundVideo, page: 'videos', type: '' });
     }
   });
 });

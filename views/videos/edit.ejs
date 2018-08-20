@@ -5,27 +5,34 @@
   <div class="row">
     <div class="input-field col s6">
       <i class="material-icons prefix">title</i>
-      <input id="icon_prefix" type="text" class="validate" name="video[title]" value="<%= video.title %>" required>
-      <label for="icon_prefix">Title</label>
+      <input id="video_title" type="text" class="validate" name="video[title]" value="<%= video.title %>" required>
+      <label for="video_title">Title</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s4">
+      <i class="material-icons prefix">calendar_today</i>
+      <input id="video_year" type="text" class="validate" name="video[year]" value="<%= video.year %>" required>
+      <label for="video_year">Year</label>
     </div>
     <div class="input-field col offset-s2 s4">
       <i class="material-icons prefix">calendar_today</i>
-      <input id="icon_prefix" type="text" class="validate" name="video[year]" value="<%= video.year %>" required>
-      <label for="icon_prefix">Year</label>
+      <input id="video_number" type="text" class="validate" name="video[number]" value="<%= video.number %>" required>
+      <label for="video_number">Number</label>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s12">
       <i class="material-icons prefix">text_fields</i>
-      <textarea id="textarea1" class="materialize-textarea validate" name="video[description]" required><%= video.description %></textarea>
-      <label for="textarea1">Description</label>
+      <textarea id="video_description" class="materialize-textarea validate" name="video[description]" required><%= video.description %></textarea>
+      <label for="video_description">Description</label>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s4">
       <i class="material-icons prefix">videocam</i>
-      <input id="icon_prefix" type="text" class="validate" name="video[embedCode]" value="<%= video.embedCode %>" required>
-      <label for="icon_prefix">Youtube ID</label>
+      <input id="video_embedCode" type="text" class="validate" name="video[embedCode]" value="<%= video.embedCode %>" required>
+      <label for="video_embedCode">Youtube ID</label>
     </div>
   </div>
   <button class="btn green waves-effect waves-light" type="submit" name="action">Save
