@@ -1,14 +1,16 @@
 const express = require('express');
 let router = express.Router();
 let Video = require('../models/video');
+let sortByKey = require('../public/js/sortByKey');
 
 // INDEX route
 router.get('/', (req, res) => {
   Video.find({}, (err, allVideos) => {
+    let sortedVideos = sortByKey(allVideos, 'year').reverse();
     if (err) {
       console.log(err);
     } else {
-      res.render('videos/index', { videos: allVideos, page: 'videos' });
+      res.render('videos/index', { videos: sortedVideos, page: 'videos' });
     }
   });
 });
