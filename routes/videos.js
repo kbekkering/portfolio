@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 
 // NEW video route
 router.get('/new', function(req, res) {
-  res.render('videos/new');
+  res.render('videos/new', { page: 'videos' });
 });
 
 // SHOW individual video route
