@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
       console.log(err);
       res.send('Oops, something went wrong');
     } else {
-      res.render('videos/show', { video: foundVideo, page: 'video' });
+      res.render('videos/show', { video: foundVideo, page: 'videos', type: 'showvideo' });
     }
   });
 });
