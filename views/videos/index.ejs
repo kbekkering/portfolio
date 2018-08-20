@@ -6,7 +6,7 @@
 </p>
 
   <div class="row">
-  <% videos.forEach((video) => { %>
+    <% videos.forEach((video) => { %>
 
     <div class="col s12 m6 l4">
       <a href="/videos/<%=video.id%>">
@@ -24,20 +24,13 @@
       </a>  
     </div>
 
-  <% }) %>
+    <% }) %>
 
-  <div class="col s12 m6 l4">
-    <div class="card">
-      <div class="card-image">
-        <img src="https://pixabay.com/get/e83cb10f2df11c22d2524518b7444795ea76e5d004b0144291f4c07daee4b4_340.jpg">
-        <span class="card-title"></span>
-        <a class="btn-floating halfway-fab waves-effect waves-light red" href="/videos/new"><i class="material-icons">add</i></a>
-      </div>
-      <div class="card-content">
-        <p>Got anything new to add?</p>
-      </div>
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large deep-orange waves-effect waves-light" href="/videos/new">
+        <i class="large material-icons">add</i>
+      </a>
     </div>
-  </div>
 
   </div>
 
