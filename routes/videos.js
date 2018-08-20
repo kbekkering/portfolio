@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
       console.log(err);
       res.send('Oops, something went wrong');
     } else {
-      res.render('videos/show', { video: foundVideo, page: 'videos' });
+      res.render('videos/show', { video: foundVideo, page: 'video' });
     }
   });
 });
@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
       req.send('oops, something went wrong');
     } else {
       console.log(newlyCreated);
-      res.render('videos/index', { page: 'videos' });
+      res.redirect('/videos');
     }
   });
 });

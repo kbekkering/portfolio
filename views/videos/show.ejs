@@ -1,9 +1,13 @@
 <% include ../partials/header %>
-
-<h4><%=video.title%></h4>
+<div class="container">
+  <h4><%=video.title%></h4>
+</div>
 <div class="video-container">
   <iframe src='//www.youtube.com/embed/<%= video.embedCode %>?rel=0' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen></iframe> 
 </div>
-<p><%=video.description%></p>
+
+<div class="container">
+  <p><%=video.description%></p>
+  
 
 <% include ../partials/footer %>

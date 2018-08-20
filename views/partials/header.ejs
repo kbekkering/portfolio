@@ -22,7 +22,7 @@
           <a href="/" class="brand-logo"><i class="material-icons">assignment_ind</i>KZLF</a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <li class="<%= typeof page !== 'undefined' && page === 'videos' ? 'active' : '' %>"><a href="/videos">Videos</a></li>
+            <li class="<%= typeof page !== 'undefined' && page === 'videos' || 'video' ? 'active' : '' %>"><a href="/videos">Videos</a></li>
           </ul>
         </div>
       </nav>
@@ -31,5 +31,6 @@
         <li><a href="/videos">Videos</a></li>
       </ul>
 
-      <div class="container">
-
+      <% if (typeof page !== 'undefined' && page !== 'video') { %>
+        <div class="container">
+      <% } %>
