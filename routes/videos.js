@@ -1,25 +1,19 @@
 const express = require('express');
 let router = express.Router();
 let Video = require('../models/video');
-let sortByKey = require('../public/js/sortByKey');
+let sortByKeys = require('../modules/sortByKeys');
+let getUnique = require('../modules/getUnique');
 
 // INDEX route
 router.get('/', (req, res) => {
   Video.find({}, (err, allVideos) => {
-    let sortedVideos = sortByKey(allVideos, 'year').reverse();
-    let uniqueYears = sortedVideos.map((video) => video.year).filter(function(value, index, self) {
-      return self.indexOf(value) === index;
-    });
-    let testVideos = allVideos.sort(function(video1, video2) {
-      if (video1.year > video2.year) {return -1};
-      if (video1.year < video2.year) {return 1};
-      if (video1.number > video2.number) {return 1};
-      if (video1.number < video2.number) {return -1};
-    });
+    let sortedVideos = sortByKeys(allVideos, 'year', 'number');
+    let uniqueYears = getUnique(sortedVideos, 'year');
+
     if (err) {
       console.log(err);
     } else {
-      res.render('videos/index', { videos: testVideos, years: uniqueYears, page: 'videos', type: '' });
+      res.render('videos/index', { videos: sortedVideos, years: uniqueYears, page: 'videos', type: '' });
     }
   });
 });
