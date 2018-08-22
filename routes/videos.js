@@ -37,7 +37,7 @@ router.get('/:id', (req, res) => {
 });
 
 // EDIT route
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', isLoggedIn, (req, res) => {
   Video.findById(req.params.id, (err, foundVideo) => {
     if (err) {
       console.log(err);
@@ -49,7 +49,7 @@ router.get('/:id/edit', (req, res) => {
 });
 
 // CREATE route
-router.post('/', (req, res) => {
+router.post('/', isLoggedIn, (req, res) => {
   let newVideo = {
     title: req.sanitize(req.body.title),
     embedCode: req.sanitize(req.body.embedCode),
@@ -69,7 +69,7 @@ router.post('/', (req, res) => {
 });
 
 // UPDATE route
-router.put('/:id', (req, res) => {
+router.put('/:id', isLoggedIn, (req, res) => {
   req.body.video.title = req.sanitize(req.body.video.title);
   req.body.video.embedCode = req.sanitize(req.body.video.embedCode);
   req.body.video.description = req.sanitize(req.body.video.description);
@@ -85,7 +85,7 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE route
-router.delete('/:id', (req, res) => {
+router.delete('/:id', isLoggedIn, (req, res) => {
   Video.findByIdAndRemove(req.params.id, (err) => {
     if (err) {
       console.log(err);

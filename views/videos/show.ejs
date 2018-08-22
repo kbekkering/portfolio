@@ -1,4 +1,5 @@
 <% include ../partials/header %>
+
 <div class="container">
   <h4><%=video.title%></h4>
 </div>
@@ -9,17 +10,20 @@
 <div class="container">
   <p><%=video.description%></p>
 
+  <% if (currentUser) {%>
     <div class="fixed-action-btn">
-      <a class="btn-floating btn-large deep-orange waves-effect waves-light" href="/videos/<%= video.id %>/edit">
-        <i class="large material-icons">edit</i>
-      </a>
-      <ul>
-        <li>
-          <form action="/videos/<%= video._id %>?_method=DELETE" method="POST">
-            <button class="btn-floating red"><i class="material-icons">delete_forever</i></button>
-          </form>
-        </li>
-      </ul>
-    </div>
+        <a class="btn-floating btn-large deep-orange waves-effect waves-light" href="/videos/<%= video.id %>/edit">
+          <i class="large material-icons">edit</i>
+        </a>
+        <ul>
+          <li>
+            <form action="/videos/<%= video._id %>?_method=DELETE" method="POST">
+              <button class="btn-floating red"><i class="material-icons">delete_forever</i></button>
+            </form>
+          </li>
+        </ul>
+      </div>
+  <%}%>
+    
 
 <% include ../partials/footer %>
