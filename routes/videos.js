@@ -50,11 +50,12 @@ router.get('/:id/edit', (req, res) => {
 // CREATE route
 router.post('/', (req, res) => {
   let newVideo = {
-    title: req.body.title,
-    embedCode: req.body.embedCode,
+    title: req.sanitize(req.body.title),
+    embedCode: req.sanitize(req.body.embedCode),
     year: req.body.year,
-    description: req.body.description
+    description: req.sanitize(req.body.description)
   };
+
   Video.create(newVideo, (err, newlyCreated) => {
     if (err) {
       console.log(err);
@@ -68,6 +69,9 @@ router.post('/', (req, res) => {
 
 // UPDATE route
 router.put('/:id', (req, res) => {
+  req.body.video.title = req.sanitize(req.body.video.title);
+  req.body.video.embedCode = req.sanitize(req.body.video.embedCode);
+  req.body.video.description = req.sanitize(req.body.video.description);
   Video.findByIdAndUpdate(req.params.id, req.body.video, (err, updatedVideo) => {
     if (err) {
       console.log(err);
