@@ -1,9 +1,15 @@
 // Mobile Topnav
 document.addEventListener('DOMContentLoaded', function() {
-  let elems = document.querySelectorAll('.sidenav');
-  let options = { 
+  let sidenav = document.querySelectorAll('.sidenav');
+  let sidenavOptions = { 
     edge: 'left',
     draggable: true
   };
-  M.Sidenav.init(elems, options);
+  M.Sidenav.init(sidenav, sidenavOptions);
+
+  let editButton = document.querySelectorAll('.fixed-action-btn');
+  let editButtonOptions = {
+    
+  };
+  M.FloatingActionButton.init(editButton, editButtonOptions);
 });
