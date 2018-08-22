@@ -2,19 +2,18 @@ const express = require('express');
 let router = express.Router();
 let Video = require('../models/video');
 let sortByKeys = require('../modules/sortByKeys');
-let getUnique = require('../modules/getUnique');
 let isLoggedIn = require('../modules/middleware/isLoggedIn');
+let populateYears = require('../modules/middleware/populateYears');
 
 // INDEX route
-router.get('/', (req, res) => {
+router.get('/', populateYears, (req, res) => {
   Video.find({}, (err, allVideos) => {
     let sortedVideos = sortByKeys(allVideos, 'year', 'number');
-    let uniqueYears = getUnique(sortedVideos, 'year');
 
     if (err) {
       console.log(err);
     } else {
-      res.render('videos/index', { videos: sortedVideos, years: uniqueYears, page: 'videos', type: '' });
+      res.render('videos/index', { videos: sortedVideos, page: 'videos', type: '' });
     }
   });
 });
