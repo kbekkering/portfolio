@@ -3,6 +3,7 @@ let router = express.Router();
 let Video = require('../models/video');
 let sortByKeys = require('../modules/sortByKeys');
 let getUnique = require('../modules/getUnique');
+let isLoggedIn = require('../modules/middleware/isLoggedIn');
 
 // INDEX route
 router.get('/', (req, res) => {
@@ -19,7 +20,7 @@ router.get('/', (req, res) => {
 });
 
 // NEW video route
-router.get('/new', function(req, res) {
+router.get('/new', isLoggedIn, function(req, res) {
   res.render('videos/new', { page: 'videos', type: '' });
 });
 

@@ -10,7 +10,7 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
   let newUser = new User({ username: req.body.username });
-  User.register(newUser, req.body.password, (err, user) => {
+  User.register(newUser, req.body.password, (err) => {
     if (err) {
       console.log(err);
       res.send('oops');
@@ -22,6 +22,21 @@ router.post('/register', (req, res) => {
   });
 });
 
+router.get('/login', (req, res) => {
+  res.render('login');
+});
+
+router.post('/login', passport.authenticate('local', 
+  {
+    successRedirect: '/videos',
+    failureRedirect: '/login'
+  }
+));
+
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/videos');
+});
 
 router.get('/', (req, res) => {
   res.render('index', { page: 'index' });
