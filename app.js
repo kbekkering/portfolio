@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const express = require('express');
 const app = express();
+const flash = require('connect-flash');
 // const seedDB = require('./seeds');
 
 mongoose.connect(process.env.DATABASEURL); // mongodb, currently running on mlab
@@ -17,6 +18,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(expressSanitizer());
+app.use(flash());
 
 // seedDB(); // seed the DB
 
@@ -32,9 +34,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Make currentUser available in all views
 app.use(function(req, res, next) {
+  // Make currentUser available in all views
   res.locals.currentUser = req.user;
+  // make flash error & success messages available in all views
+  res.locals.error = req.flash('error');
+  res.locals.success = req.flash('success');
   next();
 });
 

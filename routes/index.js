@@ -31,13 +31,16 @@ router.get('/login', populateYears, (req, res) => {
 router.post('/login', passport.authenticate('local', 
   {
     successRedirect: '/videos',
-    failureRedirect: '/login'
+    successFlash: 'logged in',
+    failureRedirect: '/login',
+    failureFlash: 'login failed, try again'
   }
 ));
 
 // Logout route
 router.get('/logout', (req, res) => {
   req.logout();
+  req.flash('success', 'logged out');
   res.redirect('/videos');
 });
 
