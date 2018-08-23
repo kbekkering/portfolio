@@ -49,4 +49,9 @@ router.get('/', populateYears, (req, res) => {
   res.render('index', { page: 'index' });
 });
 
+router.get('*', populateYears, (req, res) => {
+  req.flash('error', 'that url does not exist');
+  res.render('index', { page: 'index' });
+})
+
 module.exports = router;
