@@ -1,5 +1,5 @@
-// Mobile Topnav
 document.addEventListener('DOMContentLoaded', function() {
+  // Mobile sidenav
   let sidenav = document.querySelectorAll('.sidenav');
   let sidenavOptions = { 
     edge: 'left',
@@ -7,9 +7,15 @@ document.addEventListener('DOMContentLoaded', function() {
   };
   M.Sidenav.init(sidenav, sidenavOptions);
 
+  // floating action button
   let editButton = document.querySelectorAll('.fixed-action-btn');
-  let editButtonOptions = {
-    
-  };
+  let editButtonOptions = {};
   M.FloatingActionButton.init(editButton, editButtonOptions);
+
+  let yearsDropdown = document.querySelectorAll('.dropdown-trigger');
+  let yearsOptions = {
+    hover: true, 
+    coverTrigger: false
+  };
+  M.Dropdown.init(yearsDropdown, yearsOptions);
 });

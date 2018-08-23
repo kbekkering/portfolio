@@ -23,14 +23,22 @@
             <a href="/" class="brand-logo"><i class="material-icons">assignment_ind</i>KZLF</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-              <li class="<%= typeof page !== 'undefined' && page === 'videos' ? 'active' : '' %>"><a href="/videos">Videos</a></li>
+              <li class="<%= typeof page !== 'undefined' && page === 'videos' ? 'active' : '' %>"><a data-target="dropdown1" class="dropdown-trigger" href="/videos">Videos</a></li>
             </ul>
           </div>
         </nav>
       </div>
+
+      <!-- Years Dropdown -->
+      <ul id='dropdown1' class='dropdown-content'>
+        <% years.forEach(function(year){  %>
+        <li><a href="#<%= year %>"><%= year %></a></li>
+        <% }) %>
+      </ul>
 
       <ul class="sidenav" id="mobile-demo">
         <li><a href="/videos">Videos</a></li>
       </ul>
 
       <div class="container">
+

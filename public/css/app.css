@@ -17,3 +17,8 @@ a .card .card-content p {
   justify-content: center;
   align-items: center;
 }
+
+.internal-link {
+  padding-top: 50px;
+  visibility: hidden;
+}
