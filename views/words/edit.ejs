@@ -1,0 +1,22 @@
+<% include ../partials/header %>
+
+<h1>edit word</h1>
+<form class="col s12" action="/lrnr/<%= word._id %>?_method=PUT" method="POST">
+  <div class="row">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">flag</i>
+      <input id="english-word" type="text" class="validate" value="<%= word.english %>" name="word[english]" required>
+      <label for="english-word">English</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">outlined_flag</i>
+      <input id="german-word" type="text" class="validate" value="<%= word.german %>" name="word[german]" required>
+      <label for="german-word">German</label>
+    </div>
+  </div>
+  <button>save changes</button>
+</form>
+
+<% include ../partials/footer %>

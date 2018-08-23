@@ -1,0 +1,10 @@
+<% include ../partials/header %>
+<ul>
+<% words.forEach(function(word) { %>
+  <li>
+    <%= word.english %> - <%= word.german %> | <a href="/lrnr/<%= word._id %>/edit">edit</a> / <form class="delete-form" action="/lrnr/<%= word._id %>?_method=DELETE"><button>delete</button></form>
+  </li>
+<% }) %>
+</ul>
+
+<% include ../partials/footer %>
