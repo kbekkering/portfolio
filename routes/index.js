@@ -9,19 +9,19 @@ router.get('/register', populateYears, (req, res) => {
   res.render('register');
 });
 
-router.post('/register', (req, res) => {
-  let newUser = new User({ username: req.body.username });
-  User.register(newUser, req.body.password, (err) => {
-    if (err) {
-      console.log(err);
-      res.send('oops');
-    } else {
-      passport.authenticate('local')(req, res, function() {
-        res.redirect('/videos');
-      });
-    }
-  });
-});
+// router.post('/register', (req, res) => {
+//   let newUser = new User({ username: req.body.username });
+//   User.register(newUser, req.body.password, (err) => {
+//     if (err) {
+//       console.log(err);
+//       res.send('oops');
+//     } else {
+//       passport.authenticate('local')(req, res, function() {
+//         res.redirect('/videos');
+//       });
+//     }
+//   });
+// });
 
 // Login routes
 router.get('/login', populateYears, (req, res) => {
