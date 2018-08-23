@@ -2,6 +2,7 @@ const express = require('express');
 const User = require('../models/user');
 let router = express.Router();
 const passport = require('passport');
+const populateYears = require('../modules/middleware/populateYears');
 
 // AUTH routes
 router.get('/register', (req, res) => {
@@ -38,7 +39,7 @@ router.get('/logout', (req, res) => {
   res.redirect('/videos');
 });
 
-router.get('/', (req, res) => {
+router.get('/', populateYears, (req, res) => {
   res.render('index', { page: 'index' });
 });
 
