@@ -27,3 +27,7 @@ a .card .card-content p {
 .toast-trigger {
   visibility: hidden;
 }
+
+.delete-form {
+  display: inline;
+}
