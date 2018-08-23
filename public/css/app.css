@@ -23,3 +23,7 @@ a .card .card-content p {
   padding-top: 50px;
   visibility: hidden;
 }
+
+.toast-trigger {
+  visibility: hidden;
+}
