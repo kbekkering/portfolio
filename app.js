@@ -45,8 +45,10 @@ app.use(function(req, res, next) {
 
 // Routes
 let videoRoutes = require('./routes/videos');
+let wordRoutes = require('./routes/words');
 let indexRoutes = require('./routes/index');
 app.use('/videos', videoRoutes);
+app.use('/lrnr', wordRoutes);
 app.use('/', indexRoutes);
 
 app.listen(process.env.PORT, function() {
