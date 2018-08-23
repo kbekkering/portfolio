@@ -1,14 +1,14 @@
 require('dotenv').config();
 
+const expressSanitizer = require('express-sanitizer');
+const methodOverride = require('method-override');
+const LocalStrategy = require('passport-local');
+const bodyParser = require('body-parser');
+const User = require('./models/user');
+const mongoose = require('mongoose');
+const passport = require('passport');
 const express = require('express');
 const app = express();
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const methodOverride = require('method-override');
-const expressSanitizer = require('express-sanitizer');
-const passport = require('passport');
-const LocalStrategy = require('passport-local');
-const User = require('./models/user');
 // const seedDB = require('./seeds');
 
 mongoose.connect(process.env.DATABASEURL); // mongodb, currently running on mlab
@@ -32,14 +32,15 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// Make currentUser available in all views
 app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
   next();
 });
 
+// Routes
 let videoRoutes = require('./routes/videos');
 let indexRoutes = require('./routes/index');
-
 app.use('/', indexRoutes);
 app.use('/videos', videoRoutes);
 

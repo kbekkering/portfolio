@@ -4,8 +4,8 @@ let router = express.Router();
 const passport = require('passport');
 const populateYears = require('../modules/middleware/populateYears');
 
-// AUTH routes
-router.get('/register', (req, res) => {
+// Registration routes
+router.get('/register', populateYears, (req, res) => {
   res.render('register');
 });
 
@@ -23,7 +23,8 @@ router.post('/register', (req, res) => {
   });
 });
 
-router.get('/login', (req, res) => {
+// Login routes
+router.get('/login', populateYears, (req, res) => {
   res.render('login');
 });
 
@@ -34,11 +35,13 @@ router.post('/login', passport.authenticate('local',
   }
 ));
 
+// Logout route
 router.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/videos');
 });
 
+// Root route
 router.get('/', populateYears, (req, res) => {
   res.render('index', { page: 'index' });
 });

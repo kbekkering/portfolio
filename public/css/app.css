@@ -3,6 +3,7 @@
   padding-right: 20px;
 }
 
+/* VIDEO index page */
 .card:hover {
   transform: scale(1.02);
   transition: .2s ease-in-out;

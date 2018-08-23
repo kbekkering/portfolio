@@ -24,7 +24,7 @@ router.get('/new', isLoggedIn, function(req, res) {
 });
 
 // SHOW individual video route
-router.get('/:id', (req, res) => {
+router.get('/:id', populateYears, (req, res) => {
   Video.findById(req.params.id, (err, foundVideo) => {
     if (err) {
       console.log(err);
@@ -49,6 +49,7 @@ router.get('/:id/edit', isLoggedIn, (req, res) => {
 
 // CREATE route
 router.post('/', isLoggedIn, (req, res) => {
+  // sanitize user inputs
   let newVideo = {
     title: req.sanitize(req.body.title),
     embedCode: req.sanitize(req.body.embedCode),
@@ -69,6 +70,7 @@ router.post('/', isLoggedIn, (req, res) => {
 
 // UPDATE route
 router.put('/:id', isLoggedIn, (req, res) => {
+  // sanitize user inputs
   req.body.video.title = req.sanitize(req.body.video.title);
   req.body.video.embedCode = req.sanitize(req.body.video.embedCode);
   req.body.video.description = req.sanitize(req.body.video.description);
