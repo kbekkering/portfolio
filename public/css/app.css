@@ -27,3 +27,12 @@ a .card .card-content p {
 .toast-trigger {
   visibility: hidden;
 }
+
+p a {
+  color: #fb8c00 !important; /* materialize orange darken-1 */
+  text-decoration: underline;
+}
+
+p a:hover {
+  color: #ef6c00 !important; /* materialize orange darken-3 */
+}
