@@ -2,10 +2,23 @@ const express = require('express');
 let router = express.Router();
 const populateYears = require('../modules/middleware/populateYears');
 const Word = require('../models/word');
+const lrnr = require('../modules/lrnr');
 
+// LRNR route
+router.get('/', populateYears, (req, res) => {
+  Word.find({}, (err, allWords) => {
+    if (err) { 
+      console.log(err);
+      req.flash('error', err);
+      res.redirect('back');
+    } else {
+      res.render('lrnr', { words: allWords, displayWord: allWords[0], lrnr: lrnr });
+    }
+  });
+});
 
 // LIST all words route
-router.get('/', populateYears, (req, res) => {
+router.get('/words', populateYears, (req, res) => {
   Word.find({}, (err, allWords) => {
     if (err) {
       console.log(err);

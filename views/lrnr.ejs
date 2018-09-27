@@ -1,0 +1,14 @@
+<% include ./partials/header %>
+<h1>LRNR ZEIT</h1>
+
+<% let question = lrnr.generateQuestion(words) %>
+<h3><%= question.english %></h3>
+<% question.options.forEach((option) => { %>
+  <div class="options"><%= option %></div>
+<% }) %>
+<span id="solution"><%= question.solution %></span>
+
+
+<script src="/js/lrnr.js"></script>
+<% include ./partials/footer %>
+

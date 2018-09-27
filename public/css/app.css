@@ -31,3 +31,16 @@ a .card .card-content p {
 .delete-form {
   display: inline;
 }
+
+/* LRNR */
+#solution {
+  visibility: hidden;
+}
+
+.correct {
+background-color: green; 
+}
+
+.wrong {
+  opacity: 0.5;
+}
