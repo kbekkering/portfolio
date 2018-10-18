@@ -95,4 +95,10 @@ router.delete('/:id', (req, res) => {
   });
 });
 
+// single page lrnr
+router.get('/single', populateYears, (req, res) => {
+  res.render('single-page-lrnr');
+});
+
+
 module.exports = router;
