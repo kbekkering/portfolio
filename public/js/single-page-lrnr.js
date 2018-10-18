@@ -6,7 +6,7 @@ let url = 'https://api.myjson.com/bins/14te0o';
 let allWords = [];
 let question = {};
 
-// get all words from API
+// GET ALL THE WORDS FROM API
 function getAllWords() {
   let XHR = new XMLHttpRequest();
   XHR.onreadystatechange = function() {
@@ -19,7 +19,7 @@ function getAllWords() {
 }
 getAllWords();
 
-// generate the question
+// GENERATE THE QUESTION
 function generateQuestion() {
   // select 3 words from allWords
   let indexArray = [];
@@ -65,3 +65,4 @@ function generateQuestion() {
 btn.addEventListener('click', function() {
   generateQuestion();
 });
+

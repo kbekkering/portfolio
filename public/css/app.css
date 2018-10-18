@@ -32,15 +32,46 @@ a .card .card-content p {
   display: inline;
 }
 
-/* LRNR */
-#solution {
-  visibility: hidden;
+/* SINGLE PAGE LRNR */
+.lrnr-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 36px;
 }
 
-.correct {
-background-color: green; 
+.lrnr-container > .options {
+  background-color: red;
+  height: 100px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+
 }
 
-.wrong {
-  opacity: 0.5;
+.lrnr-container > .options.choose {
+  background-color: white;
+  border: 1px solid #979797;
+}
+.lrnr-container > .options.choose:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+  transition: .2s ease-in-out;
+}
+
+.lrnr-container > .options.wrong {
+  background-color: #D0021B;
+  color: white;
+}
+
+.lrnr-container > .options.correct {
+  background-color: #388E3C;
+  color: white;
+}
+
+.lrnr-container > .options.correction {
+  background-color: #E6E6E6;
+  color: #388E3C;
 }
