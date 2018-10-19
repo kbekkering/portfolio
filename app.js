@@ -47,9 +47,12 @@ app.use(function(req, res, next) {
 let videoRoutes = require('./routes/videos');
 let wordRoutes = require('./routes/words');
 let indexRoutes = require('./routes/index');
+let apiRoutes = require('./routes/api');
 app.use('/videos', videoRoutes);
 app.use('/lrnr', wordRoutes);
+app.use('/api', apiRoutes);
 app.use('/', indexRoutes);
+
 
 app.listen(process.env.PORT, function() {
   console.log('Portfolio server is running on http://localhost:' + process.env.PORT);
