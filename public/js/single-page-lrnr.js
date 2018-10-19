@@ -52,7 +52,7 @@ function generateQuestion() {
 }
 
 // KEEPING SCORE
-let setScore = function (result) {
+function setScore(result) {
   if (result === 'reset' || result === 'wrong') {
     score = 0;
     scoreDisplay.innerHTML = score;
@@ -91,7 +91,7 @@ function resetQuestion() {
 // CHECK ANSWER
 // 
 // if correct: add .correct to clicked element
-let answerCorrect = function (target) {
+function answerCorrect(target) {
   target.classList.add('correct');
   target.classList.remove('choose');
   setScore('correct');
@@ -99,7 +99,7 @@ let answerCorrect = function (target) {
 };
 
 // if false: add .wrong to clicked element
-let answerWrong = function (target) {
+function answerWrong(target) {
   target.classList.toggle('wrong');
   target.classList.remove('choose');
   setScore('wrong');
@@ -107,13 +107,13 @@ let answerWrong = function (target) {
 };
 
 // add .correction to the correct answer
-let answerCorrection = function (target) {
+function answerCorrection(target) {
   target.classList.add('correction');
   target.classList.remove('choose');
 };
 
 // add .fade to wrong answer that wasn't clicked
-let answerFade = function (target) {
+function answerFade(target) {
   target.classList.add('fade');
   target.classList.remove('choose');
 };
