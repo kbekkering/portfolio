@@ -1,9 +1,11 @@
 let wordDisplay = document.querySelector('#word');
 let optionsDisplay = Array.from(document.querySelectorAll('.options'));
+let scoreDisplay = document.querySelector('#score');
 
 let url = 'https://api.myjson.com/bins/14te0o';
 let allWords = [];
 let question = {};
+let score = 0;
 
 // DISPLAY A QUESTION 
 // 
@@ -49,6 +51,17 @@ function generateQuestion() {
   }
 }
 
+// KEEPING SCORE
+let setScore = function (result) {
+  if (result === 'reset' || result === 'wrong') {
+    score = 0;
+    scoreDisplay.innerHTML = score;
+  } else if (result === 'correct') {
+    score++;
+    scoreDisplay.innerHTML = score;
+  }
+};
+
 // GET ALL THE WORDS FROM API
 function getAllWords() {
   let XHR = new XMLHttpRequest();
@@ -81,6 +94,7 @@ function resetQuestion() {
 let answerCorrect = function (target) {
   target.classList.add('correct');
   target.classList.remove('choose');
+  setScore('correct');
   resetQuestion();
 };
 
@@ -88,6 +102,7 @@ let answerCorrect = function (target) {
 let answerWrong = function (target) {
   target.classList.toggle('wrong');
   target.classList.remove('choose');
+  setScore('wrong');
   resetQuestion();
 };
 
@@ -121,10 +136,13 @@ function checkAnswer(clickedAnswer) {
   });
 }
 
-
-// ADD LISTENERS TO ANSWERS
+// SETUP PAGE FOR INTERACTION
+// add listeners to options
 optionsDisplay.forEach((option) => {
   option.addEventListener('click', function() {
     checkAnswer(option);
   });
 });
+
+// set scoreDisplay
+setScore('reset');
