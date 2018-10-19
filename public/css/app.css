@@ -40,7 +40,7 @@ a .card .card-content p {
   font-size: 36px;
 }
 
-.lrnr-container > .options {
+.lrnr-container > .options, .lrnr-container > #word {
   height: 100px;
   margin: 10px;
   display: flex;
