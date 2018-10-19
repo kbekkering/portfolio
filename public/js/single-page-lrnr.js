@@ -2,7 +2,7 @@ let wordDisplay = document.querySelector('#word');
 let optionsDisplay = Array.from(document.querySelectorAll('.options'));
 let scoreDisplay = document.querySelector('#score');
 
-let url = 'https://api.myjson.com/bins/14te0o';
+let url = '/api';
 let allWords = [];
 let question = {};
 let score = 0;
