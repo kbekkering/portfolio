@@ -1,25 +1,13 @@
-let btn = document.querySelector('#btn');
 let wordDisplay = document.querySelector('#word');
-let optionsDisplay = document.querySelectorAll('.options');
+let optionsDisplay = Array.from(document.querySelectorAll('.options'));
 
 let url = 'https://api.myjson.com/bins/14te0o';
 let allWords = [];
 let question = {};
 
-// GET ALL THE WORDS FROM API
-function getAllWords() {
-  let XHR = new XMLHttpRequest();
-  XHR.onreadystatechange = function() {
-    if (XHR.readyState === 4 && XHR.status === 200) {
-      allWords = JSON.parse(XHR.responseText);
-    }
-  };
-  XHR.open('GET', url);
-  XHR.send();
-}
-getAllWords();
-
-// GENERATE THE QUESTION
+// DISPLAY A QUESTION 
+// 
+// Generate the question
 function generateQuestion() {
   // select 3 words from allWords
   let indexArray = [];
@@ -57,12 +45,86 @@ function generateQuestion() {
   // display question + answer-options
   wordDisplay.innerHTML = question.english;
   for (let i = 0; i < question.options.length; i++) {
-    console.log(`i = ${i}`);
     optionsDisplay[i].innerHTML = question.options[i];
   }
 }
 
-btn.addEventListener('click', function() {
-  generateQuestion();
-});
+// GET ALL THE WORDS FROM API
+function getAllWords() {
+  let XHR = new XMLHttpRequest();
+  XHR.onreadystatechange = function() {
+    if (XHR.readyState === 4 && XHR.status === 200) {
+      allWords = JSON.parse(XHR.responseText);
+      generateQuestion();
+    }
+  };
+  XHR.open('GET', url);
+  XHR.send();
+}
+getAllWords();
 
+// RESET AND ASK NEW QUESTION
+// 
+function resetQuestion() {
+  window.setTimeout(function() { 
+    generateQuestion();
+    optionsDisplay.forEach((option) => {
+      option.classList.remove('wrong', 'correct', 'correction', 'fade');
+      option.classList.add('choose');
+    });
+  }, 500);
+}
+
+// CHECK ANSWER
+// 
+// if correct: add .correct to clicked element
+let answerCorrect = function (target) {
+  target.classList.add('correct');
+  target.classList.remove('choose');
+  resetQuestion();
+};
+
+// if false: add .wrong to clicked element
+let answerWrong = function (target) {
+  target.classList.toggle('wrong');
+  target.classList.remove('choose');
+  resetQuestion();
+};
+
+// add .correction to the correct answer
+let answerCorrection = function (target) {
+  target.classList.add('correction');
+  target.classList.remove('choose');
+};
+
+// add .fade to wrong answer that wasn't clicked
+let answerFade = function (target) {
+  target.classList.add('fade');
+  target.classList.remove('choose');
+};
+
+// logic to check if answer was correct
+function checkAnswer(clickedAnswer) {
+  optionsDisplay.forEach((option) => {
+    if (clickedAnswer.innerHTML === option.innerHTML && clickedAnswer.innerHTML === question.german) {
+      // the correct answer was clicked
+      answerCorrect(option);
+    } else if (option.innerHTML === question.german) {
+      // this was the correct answer
+      answerCorrection(option);
+    } else if (clickedAnswer.innerHTML === option.innerHTML) {
+      // the wrong answer was clicked
+      answerWrong(option);
+    } else {
+      answerFade(option);
+    }
+  });
+}
+
+
+// ADD LISTENERS TO ANSWERS
+optionsDisplay.forEach((option) => {
+  option.addEventListener('click', function() {
+    checkAnswer(option);
+  });
+});
