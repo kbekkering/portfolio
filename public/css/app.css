@@ -41,14 +41,12 @@ a .card .card-content p {
 }
 
 .lrnr-container > .options {
-  background-color: red;
   height: 100px;
   margin: 10px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
-
 }
 
 .lrnr-container > .options.choose {
@@ -64,14 +62,22 @@ a .card .card-content p {
 .lrnr-container > .options.wrong {
   background-color: #D0021B;
   color: white;
+  border:none;
 }
 
 .lrnr-container > .options.correct {
   background-color: #388E3C;
   color: white;
+  border: none;
 }
 
 .lrnr-container > .options.correction {
   background-color: #E6E6E6;
   color: #388E3C;
+  border: none;
+}
+
+.lrnr-container > .options.fade {
+  opacity: 0.5;
+  border: none;
 }
